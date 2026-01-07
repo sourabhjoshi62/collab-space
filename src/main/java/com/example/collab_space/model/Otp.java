@@ -2,7 +2,9 @@ package com.example.collab_space.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -15,12 +17,12 @@ public class Otp {
     @Column(nullable = false)
     Integer otp;
 
-    @ManyToOne
+    @OneToOne
     User user;
 
-    @Column(nullable = false)
-    LocalTime creationTime;
+    @CreationTimestamp
+    LocalDateTime creationTime;
 
     @Column(nullable = false)
-    LocalTime expiryTime;
+    LocalDateTime expiryTime;
 }
